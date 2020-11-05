@@ -32,49 +32,34 @@ class CustomisationHairScene extends Phaser.Scene {
         let bg = this.add.image(0, 0, this.data.backgroundName);
         bg.setOrigin(0, 0);
 
-        let hairBack = this.add.image(game.config.width / 2, game.config.height / 2, this.hairBackName);
-        hairBack.setScale(.4);
+        let hairBack, body, hairFront, form, button, text;
 
-        let body = this.add.image(game.config.width / 2, game.config.height / 2, this.data.mainhero.bodyName);
-        body.setScale(.4);
+        addImages(this,
+            this.hairFrontName, this.hairFrontPath,
+            this.hairBackName, this.hairBackPath, false);
 
-        let hairFront = this.add.image(game.config.width / 2, game.config.height / 2, this.hairFrontName);
-        hairFront.setScale(.4);
+        function addImages(scene, hairFrontName, hairFrontPath, hairBackName, hairBackPath, rebuild) {
+            if (rebuild) {
+                hairBack.destroy();
+                body.destroy();
+                hairFront.destroy();
+                form.destroy();
+                button.destroy();
+                text.destroy();
+            }
 
-        let form = this.add.text(80, game.config.height - 130, 'Select your hair');
-        form.setScale(1.5);
-
-        let button = this.add.image(game.config.width / 2, game.config.height - 50, 'button')
-            .setInteractive()
-            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                    this.data.mainhero.hairFrontName = this.hairFrontName;
-                    this.data.mainhero.hairFrontPath = this.hairFrontPath;
-                    this.data.mainhero.hairBackName = this.hairBackName;
-                    this.data.mainhero.hairBackPath = this.hairBackPath;
-                    ControllerScene.nextSceneByName(this.nextSceneName, this);
-                }
-            );
-        button.setScale(.8);
-        let text = this.add.text(game.config.width / 2 - 30, game.config.height - 60, 'Confirm');
-
-        function executeButton(scene, hairFrontName, hairFrontPath, hairBackName, hairBackPath) {
-            hairBack.destroy();
             hairBack = scene.add.image(game.config.width / 2, game.config.height / 2, hairBackName);
             hairBack.setScale(.4);
 
-            body.destroy();
             body = scene.add.image(game.config.width / 2, game.config.height / 2, scene.data.mainhero.bodyName);
             body.setScale(.4);
 
-            hairFront.destroy();
             hairFront = scene.add.image(game.config.width / 2, game.config.height / 2, hairFrontName);
             hairFront.setScale(.4);
 
-            form.destroy();
             form = scene.add.text(80, game.config.height - 130, 'Select your hair');
             form.setScale(1.5);
 
-            button.destroy();
             button = scene.add.image(game.config.width / 2, game.config.height - 50, 'button')
                 .setInteractive()
                 .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
@@ -87,7 +72,6 @@ class CustomisationHairScene extends Phaser.Scene {
                 );
             button.setScale(.8);
 
-            text.destroy();
             text = scene.add.text(game.config.width / 2 - 30, game.config.height - 60, 'Confirm');
         }
 
@@ -95,17 +79,17 @@ class CustomisationHairScene extends Phaser.Scene {
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
                     // default
-                    executeButton(this,
+                    addImages(this,
                         this.hairFrontName, this.hairFrontPath,
-                        this.hairBackName, this.hairBackPath);
+                        this.hairBackName, this.hairBackPath, true);
                 }
             );
         this.add.image(game.config.width - 40, game.config.height / 2, this.data.vectorRightName)
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                    executeButton(this,
+                    addImages(this,
                         'hairFront2', 'assets/img/customisation/hair/front/hair_f_4.png',
-                        'hairBack2', 'assets/img/customisation/hair/back/hair_f_4_back.png');
+                        'hairBack2', 'assets/img/customisation/hair/back/hair_f_4_back.png', true);
                 }
             );
     }

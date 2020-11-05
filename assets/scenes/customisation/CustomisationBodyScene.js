@@ -27,33 +27,21 @@ class CustomisationBodyScene extends Phaser.Scene {
         let bg = this.add.image(0, 0, this.data.backgroundName);
         bg.setOrigin(0, 0);
 
-        let body = this.add.image(game.config.width / 2, game.config.height / 2, this.bodyName);
-        body.setScale(.4);
-        let form = this.add.text(80, game.config.height - 130, 'Select your body');
-        form.setScale(1.5);
+        let body, form, button, text;
 
-        let button = this.add.image(game.config.width / 2, game.config.height - 50, 'button')
-            .setInteractive()
-            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                    this.data.mainhero.bodyName = this.bodyName;
-                    this.data.mainhero.bodyPath = this.bodyPath;
-                    ControllerScene.nextSceneByName(this.nextSceneName, this);
-                }
-            );
-        button.setScale(.8);
-        let text = this.add.text(game.config.width / 2 - 30, game.config.height - 60, 'Confirm');
+        function addImages(scene, bodyName, bodyPath, rebuild) {
+            if (rebuild) {
+                body.destroy();
+                form.destroy();
+                button.destroy();
+                text.destroy();
+            }
 
-        // rebuild scene elements
-        function executeButton(scene, bodyName, bodyPath) {
-            body.destroy();
             body = scene.add.image(game.config.width / 2, game.config.height / 2, bodyName);
             body.setScale(.4);
-
-            form.destroy();
-            form = scene.add.text(80, game.config.height - 150, 'Select your body');
+            form = scene.add.text(80, game.config.height - 130, 'Select your body');
             form.setScale(1.5);
 
-            button.destroy();
             button = scene.add.image(game.config.width / 2, game.config.height - 50, 'button')
                 .setInteractive()
                 .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
@@ -63,22 +51,21 @@ class CustomisationBodyScene extends Phaser.Scene {
                     }
                 );
             button.setScale(.8);
-            text.destroy();
             text = scene.add.text(game.config.width / 2 - 30, game.config.height - 60, 'Confirm');
         }
+
+        addImages(this, this.bodyName, this.bodyPath, false);
 
         this.add.image(40, game.config.height / 2, this.data.vectorLeftName)
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                    // default
-                    executeButton(this, this.bodyName, this.bodyPath);
+                    addImages(this, this.bodyName, this.bodyPath, true);
                 }
             );
         this.add.image(game.config.width - 40, game.config.height / 2, this.data.vectorRightName)
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                    // update bodyName
-                    executeButton(this, 'body2', 'assets/img/customisation/body/3/face_f_3_body_f_regular_latino_3.png');
+                    addImages(this, 'body2', 'assets/img/customisation/body/3/face_f_3_body_f_regular_latino_3.png', true);
                 }
             );
     }
