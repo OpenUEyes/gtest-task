@@ -106,7 +106,7 @@ class CustomisationClothesScene extends Phaser.Scene {
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
                     executeButton(this,
-                        'clothes2', 'assets/start/clothes/cloths_f_regular_9.png');
+                        'clothes2', 'assets/img/customisation/clothes/cloths_f_regular_9.png');
                 }
             );
     }

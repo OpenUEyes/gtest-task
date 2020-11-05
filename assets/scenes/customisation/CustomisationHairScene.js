@@ -104,8 +104,8 @@ class CustomisationHairScene extends Phaser.Scene {
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
                     executeButton(this,
-                        'hairFront2', 'assets/start/hair/front/hair_f_4.png',
-                        'hairBack2', 'assets/start/hair/back/hair_f_4_back.png');
+                        'hairFront2', 'assets/img/customisation/hair/front/hair_f_4.png',
+                        'hairBack2', 'assets/img/customisation/hair/back/hair_f_4_back.png');
                 }
             );
     }
