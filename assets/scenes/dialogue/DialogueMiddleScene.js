@@ -1,4 +1,4 @@
-class MiddleScene extends Phaser.Scene {
+class DialogueMiddleScene extends Phaser.Scene {
     constructor(id, text, nextId) {
         super(ControllerScene.getSceneName(id));
 
@@ -22,7 +22,7 @@ class MiddleScene extends Phaser.Scene {
         bg.setOrigin(0, 0);
         bg.setInteractive();
         bg.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-            ControllerScene.nextScene(this.nextId, this);
+            ControllerScene.nextSceneById(this.nextId, this);
         });
 
         let contentBackground = this.add.image(game.config.width / 2, game.config.height / 2 + 150, 'content-background');

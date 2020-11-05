@@ -1,4 +1,4 @@
-class SideScene extends Phaser.Scene {
+class DialogueLeftScene extends Phaser.Scene {
     constructor(id, emotion, character, text, boxType, type, nextId) {
         super(ControllerScene.getSceneName(id));
 
@@ -18,17 +18,19 @@ class SideScene extends Phaser.Scene {
     preload() {
         this.load.image(this.data.backgroundName, this.data.backgroundPath);
 
-        if (this.character.toUpperCase() === Character.MAINHERO) {
-            this.load.image(this.emotion, `assets/img/mainhero/emotions/${this.emotion}.png`);
-        }
-        if (this.character.toUpperCase() === Character.RUSSELL) {
-            this.load.image(this.emotion, `assets/img/russell/emotions/${this.emotion}.png`);
-        }
-
+        DialogueCharacter.loadCharacterEmotion(this);
 
         this.load.image('content-border', 'assets/img/dialogue/middle/content-border.png');
     }
 
     create() {
+        let bg = this.add.image(0, 0, this.data.backgroundName);
+        bg.setOrigin(0, 0);
+        bg.setInteractive();
+        bg.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+            ControllerScene.nextSceneById(this.nextId, this);
+        });
+
+        // this.add.image(100, 100, this.emotion);
     }
 }

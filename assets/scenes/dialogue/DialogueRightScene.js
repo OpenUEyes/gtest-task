@@ -1,12 +1,11 @@
-class LeftScene extends Phaser.Scene {
-    constructor(id, emotion, character, text, boxType, type, nextId) {
+class DialogueRightScene extends Phaser.Scene {
+    constructor(id, emotion, character, text, type, nextId) {
         super(ControllerScene.getSceneName(id));
 
         this.id = id;
         this.emotion = emotion;
         this.character = character;
         this.text = text;
-        this.boxType = boxType;
         this.type = type;
         this.nextId = nextId;
     }
@@ -18,9 +17,7 @@ class LeftScene extends Phaser.Scene {
     preload() {
         this.load.image(this.data.backgroundName, this.data.backgroundPath);
 
-        Character.loadCharacterEmotion(this);
-
-        this.load.image('content-border', 'assets/img/dialogue/middle/content-border.png');
+        DialogueCharacter.loadCharacterEmotion(this);
     }
 
     create() {
@@ -28,9 +25,10 @@ class LeftScene extends Phaser.Scene {
         bg.setOrigin(0, 0);
         bg.setInteractive();
         bg.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-            ControllerScene.nextScene(this.nextId, this);
+            ControllerScene.nextSceneById(this.nextId, this);
         });
 
-        // this.add.image(100, 100, this.emotion);
+        let temp = this.add.image(game.config.width / 2, game.config.height / 2, this.emotion);
+        temp.setScale(.5);
     }
 }

@@ -1,4 +1,4 @@
-class BackgroundScene extends Phaser.Scene {
+class DialogueBackgroundScene extends Phaser.Scene {
     constructor(id, backgroundName, nextId) {
         super(ControllerScene.getSceneName(id));
 
@@ -15,6 +15,6 @@ class BackgroundScene extends Phaser.Scene {
     }
 
     create() {
-        ControllerScene.nextScene(this.nextId, this);
+        ControllerScene.nextSceneById(this.nextId, this);
     }
 }

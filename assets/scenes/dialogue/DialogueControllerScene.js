@@ -1,6 +1,10 @@
-class ControllerScene extends Phaser.Scene {
+class DialogueControllerScene extends Phaser.Scene {
     constructor() {
-        super('ControllerScene');
+        super('DialogueControllerScene');
+    }
+
+    init(data) {
+        this.data = data;
     }
 
     preload() {
@@ -20,17 +24,17 @@ class ControllerScene extends Phaser.Scene {
             }
 
             switch (currentEpisode.type.toUpperCase()) {
-                case Type.BACKGROUND :
+                case DialogueType.BACKGROUND :
                     this.game.scene.add(currentEpisode.sceneName,
-                        new BackgroundScene(currentEpisode.id, currentEpisode.backgroundName, currentEpisode.nextId));
+                        new DialogueBackgroundScene(currentEpisode.id, currentEpisode.backgroundName, currentEpisode.nextId));
                     break;
-                case Type.MIDDLE :
+                case DialogueType.MIDDLE :
                     this.game.scene.add(currentEpisode.sceneName,
-                        new MiddleScene(currentEpisode.id, currentEpisode.text, currentEpisode.nextId));
+                        new DialogueMiddleScene(currentEpisode.id, currentEpisode.text, currentEpisode.nextId));
                     break;
-                case Type.LEFT :
+                case DialogueType.LEFT :
                     this.game.scene.add(currentEpisode.sceneName,
-                        new LeftScene(
+                        new DialogueLeftScene(
                             currentEpisode.id,
                             currentEpisode.emotion,
                             currentEpisode.character,
@@ -40,9 +44,9 @@ class ControllerScene extends Phaser.Scene {
                             currentEpisode.nextId)
                     );
                     break;
-                case Type.RIGHT :
+                case DialogueType.RIGHT :
                     this.game.scene.add(currentEpisode.sceneName,
-                        new RightScene(
+                        new DialogueRightScene(
                             currentEpisode.id,
                             currentEpisode.emotion,
                             currentEpisode.character,
@@ -54,22 +58,7 @@ class ControllerScene extends Phaser.Scene {
             }
         }
 
-        // TODO initialize data (from json)
-        this.data = {};
         const startSceneId = episodes[0].id;
-        ControllerScene.nextScene(startSceneId, this)
-    }
-
-    // go to default scene if it's the last scene or continue to next scene
-    static nextScene(nextId, currentScene) {
-        if (nextId === -1) {
-            currentScene.scene.start('CustomisationBodyScene', currentScene.data);
-        } else {
-            currentScene.scene.start(ControllerScene.getSceneName(nextId), currentScene.data);
-        }
-    }
-
-    static getSceneName(id) {
-        return `scene${id}`;
+        ControllerScene.nextSceneById(startSceneId, this)
     }
 }
