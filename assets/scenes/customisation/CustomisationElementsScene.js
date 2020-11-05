@@ -17,6 +17,11 @@ class CustomisationElementsScene extends Phaser.Scene {
         this.data.vectorLeftName = this.vectorLeftName;
         this.data.vectorLeftPath = `assets/img/elements/${this.vectorLeftName}.png`;
     }
+    preload() {
+        this.load.image(this.data.buttonName, this.data.buttonPath);
+        this.load.image(this.data.vectorRightName, this.data.vectorRightPath);
+        this.load.image(this.data.vectorLeftName, this.data.vectorLeftPath);
+    }
 
     create() {
         ControllerScene.nextSceneByName(this.nextSceneName, this);

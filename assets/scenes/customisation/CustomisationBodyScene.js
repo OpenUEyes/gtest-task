@@ -4,6 +4,7 @@ class CustomisationBodyScene extends Phaser.Scene {
 
         this.bodyName = 'body1';
         this.bodyPath = 'assets/img/customisation/body/1/face_f_1_body_f_regular_white_1.png';
+        this.bodyType = DialogueBodyType.WHITE;
         this.nextSceneName = nextSceneName;
     }
 
@@ -12,11 +13,6 @@ class CustomisationBodyScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image(this.data.backgroundName, this.data.backgroundPath);
-        this.load.image(this.data.buttonName, this.data.buttonPath);
-        this.load.image(this.data.vectorRightName, this.data.vectorRightPath);
-        this.load.image(this.data.vectorLeftName, this.data.vectorLeftPath);
-
         // load default
         this.load.image(this.bodyName, this.bodyPath);
         // load another for choice
@@ -29,7 +25,7 @@ class CustomisationBodyScene extends Phaser.Scene {
 
         let body, form, button, text;
 
-        function addImages(scene, bodyName, bodyPath, rebuild) {
+        function addImages(scene, bodyName, bodyPath, bodyType, rebuild) {
             if (rebuild) {
                 body.destroy();
                 form.destroy();
@@ -47,6 +43,7 @@ class CustomisationBodyScene extends Phaser.Scene {
                 .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
                         scene.data.mainhero.bodyName = bodyName;
                         scene.data.mainhero.bodyPath = bodyPath;
+                        scene.data.mainhero.bodyType = bodyType;
                         ControllerScene.nextSceneByName(scene.nextSceneName, scene);
                     }
                 );
@@ -54,18 +51,19 @@ class CustomisationBodyScene extends Phaser.Scene {
             text = scene.add.text(game.config.width / 2 - 30, game.config.height - 60, 'Confirm');
         }
 
-        addImages(this, this.bodyName, this.bodyPath, false);
+        addImages(this, this.bodyName, this.bodyPath, this.bodyType, false);
 
         this.add.image(40, game.config.height / 2, this.data.vectorLeftName)
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                    addImages(this, this.bodyName, this.bodyPath, true);
+                    addImages(this, this.bodyName, this.bodyPath, this.bodyType, true);
                 }
             );
         this.add.image(game.config.width - 40, game.config.height / 2, this.data.vectorRightName)
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
-                    addImages(this, 'body2', 'assets/img/customisation/body/3/face_f_3_body_f_regular_latino_3.png', true);
+                    addImages(this, 'body2', 'assets/img/customisation/body/3/face_f_3_body_f_regular_latino_3.png',
+                        DialogueBodyType.BLACK, true);
                 }
             );
     }

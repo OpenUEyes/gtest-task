@@ -8,6 +8,7 @@ class DialogueRightScene extends Phaser.Scene {
         this.text = text;
         this.type = type;
         this.nextId = nextId;
+        console.log('right init ' + id);
     }
 
     init(data) {
@@ -28,7 +29,16 @@ class DialogueRightScene extends Phaser.Scene {
             ControllerScene.nextSceneById(this.nextId, this);
         });
 
-        let temp = this.add.image(game.config.width / 2, game.config.height / 2, this.emotion);
-        temp.setScale(.5);
+
+        let hairBack = this.add.image(game.config.width / 2, game.config.height / 2, this.data.russell.hairBackName);
+        hairBack.setScale(.4);
+        let body = this.add.image(game.config.width / 2, game.config.height / 2, this.data.russell.bodyName);
+        body.setScale(.4);
+        let clothes = this.add.image(game.config.width / 2, game.config.height / 2, this.data.russell.clothesName);
+        clothes.setScale(.4);
+        let emotion = this.add.image(game.config.width / 2, game.config.height / 2, DialogueCharacter.getEmotionName(this));
+        emotion.setScale(.4);
+        let hairFront = this.add.image(game.config.width / 2, game.config.height / 2, this.data.russell.hairFrontName);
+        hairFront.setScale(.4);
     }
 }

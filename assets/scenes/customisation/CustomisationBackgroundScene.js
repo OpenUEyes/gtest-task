@@ -13,6 +13,10 @@ class CustomisationBackgroundScene extends Phaser.Scene {
         this.data.backgroundPath = `assets/img/backgrounds/background_${this.backgroundName}.png`;
     }
 
+    preload(){
+        this.load.image(this.data.backgroundName, this.data.backgroundPath);
+    }
+
     create() {
         ControllerScene.nextSceneByName(this.nextSceneName, this);
     }

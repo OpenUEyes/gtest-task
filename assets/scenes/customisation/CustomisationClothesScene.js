@@ -14,12 +14,6 @@ class CustomisationClothesScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image(this.data.backgroundName, this.data.backgroundPath);
-        this.load.image(this.data.buttonName, this.data.buttonPath);
-        this.load.image(this.data.vectorRightName, this.data.vectorRightPath);
-        this.load.image(this.data.vectorLeftName, this.data.vectorLeftPath);
-
-        this.load.image(this.data.mainhero.bodyName, this.data.mainhero.bodyPath);
         this.load.image(this.data.mainhero.hairFrontName, this.data.mainhero.hairFrontPath);
         this.load.image(this.data.mainhero.hairBackName, this.data.mainhero.hairBackPath);
 

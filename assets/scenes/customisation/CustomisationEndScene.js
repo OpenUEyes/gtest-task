@@ -11,11 +11,6 @@ class CustomisationEndScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image(this.data.backgroundName, this.data.backgroundPath);
-
-        this.load.image(this.data.mainhero.bodyName, this.data.mainhero.bodyPath);
-        this.load.image(this.data.mainhero.hairFrontName, this.data.mainhero.hairFrontPath);
-        this.load.image(this.data.mainhero.hairBackName, this.data.mainhero.hairBackPath);
         this.load.image(this.data.mainhero.clothesName, this.data.mainhero.clothesPath);
 
         this.load.image('chosen', 'assets/img/elements/chosen.png');

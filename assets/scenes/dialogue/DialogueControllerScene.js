@@ -9,6 +9,8 @@ class DialogueControllerScene extends Phaser.Scene {
 
     preload() {
         this.load.json('dialogue', 'assets/ons2.json');
+
+        DialogueCharacter.loadRussell(this);
     }
 
     create() {

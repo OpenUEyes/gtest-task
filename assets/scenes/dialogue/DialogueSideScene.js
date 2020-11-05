@@ -16,17 +16,17 @@ class DialogueSideScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image(this.data.backgroundName, this.data.backgroundPath);
-
-        if (this.character.toUpperCase() === DialogueCharacter.MAINHERO) {
-            this.load.image(this.emotion, `assets/img/mainhero/emotions/${this.emotion}.png`);
-        }
-        if (this.character.toUpperCase() === DialogueCharacter.RUSSELL) {
-            this.load.image(this.emotion, `assets/img/russell/emotions/${this.emotion}.png`);
-        }
-
-
-        this.load.image('content-border', 'assets/img/dialogue/middle/content-border.png');
+        // this.load.image(this.data.backgroundName, this.data.backgroundPath);
+        //
+        // if (this.character.toUpperCase() === DialogueCharacter.MAINHERO) {
+        //     this.load.image(this.emotion, `assets/img/mainhero/emotions/${this.emotion}.png`);
+        // }
+        // if (this.character.toUpperCase() === DialogueCharacter.RUSSELL) {
+        //     this.load.image(this.emotion, `assets/img/russell/emotions/${this.emotion}.png`);
+        // }
+        //
+        //
+        // this.load.image('content-border', 'assets/img/dialogue/middle/content-border.png');
     }
 
     create() {
