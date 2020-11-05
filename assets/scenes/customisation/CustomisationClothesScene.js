@@ -60,8 +60,8 @@ class CustomisationClothesScene extends Phaser.Scene {
 
         function executeButton(scene, clothesName, clothesPath) {
             hairBack.destroy();
-            hairFront = scene.add.image(game.config.width / 2, game.config.height / 2, scene.data.mainhero.hairFrontName);
-            hairFront.setScale(.4);
+            hairBack = scene.add.image(game.config.width / 2, game.config.height / 2, scene.data.mainhero.hairBackName);
+            hairBack.setScale(.4);
 
             body.destroy();
             body = scene.add.image(game.config.width / 2, game.config.height / 2, scene.data.mainhero.bodyName);
