@@ -25,7 +25,7 @@ class CustomisationClothesScene extends Phaser.Scene {
 
 
         this.load.image(this.clothesName, this.clothesPath);
-        this.load.image('clothes2', 'assets/start/clothes/cloths_f_regular_9.png');
+        this.load.image('clothes2', 'assets/img/customisation/clothes/cloths_f_regular_9.png');
     }
 
     create() {

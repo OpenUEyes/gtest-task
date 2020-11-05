@@ -23,9 +23,9 @@ class CustomisationHairScene extends Phaser.Scene {
         this.load.image(this.data.mainhero.bodyName, this.data.mainhero.bodyPath);
 
         this.load.image(this.hairFrontName, this.hairFrontPath);
-        this.load.image('hairFront2', 'assets/start/hair/front/hair_f_4.png');
+        this.load.image('hairFront2', 'assets/img/customisation/hair/front/hair_f_4.png');
         this.load.image(this.hairBackName, this.hairBackPath);
-        this.load.image('hairBack2', 'assets/start/hair/back/hair_f_4_back.png');
+        this.load.image('hairBack2', 'assets/img/customisation/hair/back/hair_f_4_back.png');
     }
 
     create() {
