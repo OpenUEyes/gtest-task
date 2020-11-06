@@ -4,7 +4,7 @@ class ControllerScene extends Phaser.Scene {
     }
 
     init() {
-        // TODO initialize data (from json)
+        // initialize data (from json)
         this.data = {};
         this.startSceneName = 'CustomisationControllerScene';
     }
@@ -15,7 +15,6 @@ class ControllerScene extends Phaser.Scene {
         ControllerScene.nextSceneByName(this.startSceneName, this)
     }
 
-    // TODO when last reload
     // go to default scene if it's the last scene or continue to next scene
     static nextSceneById(nextId, currentScene) {
         if (nextId === -1) {
@@ -31,9 +30,5 @@ class ControllerScene extends Phaser.Scene {
 
     static getSceneName(id) {
         return `scene${id}`;
-    }
-
-    update(){
-
     }
 }

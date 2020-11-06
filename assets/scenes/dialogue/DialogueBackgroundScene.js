@@ -7,7 +7,6 @@ class DialogueBackgroundScene extends Phaser.Scene {
         this.nextId = nextId;
     }
 
-    // load data from previous scene and add more
     init(data) {
         this.data = data;
         this.data.backgroundName = this.backgroundName;

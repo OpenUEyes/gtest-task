@@ -54,6 +54,5 @@ class DialogueLeftScene extends Phaser.Scene {
 
         const textStyle = {fill: '#000', wordWrap: {width: contentBackground.width - 10, useAdvanceWrap: true}};
         this.add.text(game.config.width / 2 - contentBackground.width / 2 + 10, game.config.height / 2 + 115, this.text, textStyle);
-
     }
 }
