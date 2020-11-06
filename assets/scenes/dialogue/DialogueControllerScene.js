@@ -11,6 +11,9 @@ class DialogueControllerScene extends Phaser.Scene {
         this.load.json('dialogue', 'assets/ons2.json');
 
         DialogueCharacter.loadRussell(this);
+
+        this.load.image('content-background', 'assets/img/dialogue/middle/content-background.png');
+        this.load.image('content-border', 'assets/img/dialogue/middle/content-border.png');
     }
 
     create() {

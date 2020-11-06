@@ -16,6 +16,6 @@ const config = {
     height: 667,
     // mode: Phaser.Scale.FIT,
     // autoCenter: Phaser.Scale.CENTER_BOTH,
-    scene: [ControllerScene]
+    scene: [ControllerScene],
 };
 let game = new Phaser.Game(config);

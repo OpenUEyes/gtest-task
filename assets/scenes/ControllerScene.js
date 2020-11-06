@@ -32,4 +32,8 @@ class ControllerScene extends Phaser.Scene {
     static getSceneName(id) {
         return `scene${id}`;
     }
+
+    update(){
+
+    }
 }

@@ -13,8 +13,6 @@ class DialogueMiddleScene extends Phaser.Scene {
 
     preload() {
         this.load.image(this.data.backgroundName, this.data.backgroundPath);
-        this.load.image('content-background', 'assets/img/dialogue/middle/content-background.png');
-        this.load.image('content-border', 'assets/img/dialogue/middle/content-border.png');
     }
 
     create() {
@@ -24,16 +22,29 @@ class DialogueMiddleScene extends Phaser.Scene {
         bg.on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
             ControllerScene.nextSceneById(this.nextId, this);
         });
+        let scaleY = this.cameras.main.height / bg.height;
+        // bg.scaleX =  this.cameras.main.width / bg.width;
+        // bg.scaleY =  this.cameras.main.height / bg.height;
+        bg.setScale(scaleY).setScrollFactor(0);
+        console.log(bg.width);
+        bg.x = -this.cameras.main.height / 3;
+        // camera.setPosition(-100, 0);
+
+        // let image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'map')
+        // let scaleX = this.cameras.main.width / bg.width;
+        // let scaleY = this.cameras.main.height / bg.height;
+        // let scaleY = this.cameras.main.height / bg.height;
+        // let scale = Math.max(scaleX, scaleY);
+        // bg.setScale(scaleY).setScrollFactor(0);
 
         let contentBackground = this.add.image(game.config.width / 2, game.config.height / 2 + 150, 'content-background');
         contentBackground.setScale(1.05);
         this.add.image(game.config.width / 2, game.config.height / 2 + 150, 'content-border');
 
-        // TODO text wrap
-        const textStyle = {fill:'#000'};
-        let textFirst = this.text.substr(0, 40);
-        let textSecond = this.text.substr(40);
-        this.add.text(game.config.width / 2 - 150, game.config.height / 2 + 125, textFirst, textStyle);
-        this.add.text(game.config.width / 2 - 150, game.config.height / 2 + 175, textSecond, textStyle);
+        const textStyle = {fill: '#000', wordWrap: {width: contentBackground.width - 10, useAdvanceWrap: true}};
+        this.add.text(game.config.width / 2 - contentBackground.width / 2 + 10, game.config.height / 2 + 115, this.text, textStyle);
+    }
+
+    update() {
     }
 }

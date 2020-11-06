@@ -53,7 +53,7 @@ class CustomisationClothesScene extends Phaser.Scene {
             hairFront = scene.add.image(game.config.width / 2, game.config.height / 2, scene.data.mainhero.hairFrontName);
             hairFront.setScale(.4);
 
-            form = scene.add.text(80, game.config.height - 150, 'Select your clothes');
+            form = scene.add.text(60, game.config.height - 130, 'Select your clothes');
             form.setScale(1.5);
 
             button = scene.add.image(game.config.width / 2, game.config.height - 50, 'button')
